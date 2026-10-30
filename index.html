@@ -1,130 +1,121 @@
-<!doctype html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>삼국지: 무명의 영웅</title><style>
-:root{color-scheme:dark;--bg:#0b111b;--panel:#172131;--line:#334052;--gold:#edc47b;--text:#f2f1eb;--muted:#a8b6c8;--red:#ec7f7e;--green:#9cdaa9}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#263448 0,#0b111b 65%);font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;color:var(--text);line-height:1.5}button,input,select{font:inherit}button{cursor:pointer}button:disabled{opacity:.35;cursor:not-allowed}.wrap{max-width:1150px;margin:auto;padding:18px 16px 80px}header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px;flex-wrap:wrap}h1,h2,h3,p{margin:0}h1{font-size:clamp(25px,5vw,36px);font-family:serif;color:var(--gold);letter-spacing:1px}h2{font-size:19px;color:var(--gold)}h3{font-size:15px}small,.small{font-size:12px;color:var(--muted)}.sub{color:var(--muted);font-size:13px}.grid{display:grid;grid-template-columns:minmax(260px,335px) minmax(0,1fr);gap:14px}.panel{background:rgba(23,33,49,.97);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:0 8px 25px #0002}.stack{display:grid;gap:14px}.row{display:flex;justify-content:space-between;align-items:center;gap:8px}.row.wraprow{flex-wrap:wrap;justify-content:flex-start}.gap{height:12px}.muted{color:var(--muted)}.pill{display:inline-block;background:#354052;color:#e4c996;padding:4px 9px;border-radius:100px;font-size:12px}.btn{background:#34475b;color:white;border:1px solid #54687b;border-radius:9px;padding:10px 12px;min-height:43px}.btn:hover:not(:disabled){background:#465e72}.btn.gold{background:#846238;border-color:#ba9456}.btn.red{background:#643c40;border-color:#98545a}.btn.ghost{background:transparent}.actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(142px,1fr));gap:8px}.tabbar{display:flex;gap:6px;overflow:auto;padding:3px 0 12px}.tabbar button{white-space:nowrap}.tabbar .active{background:#8c6c3e;border-color:#c8a46d}.stat{display:flex;align-items:center;gap:10px;margin:8px 0}.stat label{width:34px;font-size:13px}.bar{height:8px;border-radius:8px;background:#364356;flex:1;overflow:hidden}.bar>div{height:100%;background:#d9ad68}.num{width:29px;text-align:right;font-size:13px}.cities{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.city{border:1px solid #546071;background:linear-gradient(160deg,#23354a,#1a2738);border-radius:10px;padding:11px 6px;min-height:91px;display:grid;justify-items:center;align-content:center;gap:4px;text-align:center}.city.here{outline:2px solid var(--gold)}.city .owner{font-size:11px;color:#b7c8d8}.city .name{font-weight:750}.log{display:grid;gap:6px;max-height:300px;overflow:auto}.log p{padding:8px;border-left:2px solid #ab8a55;background:#ffffff08;font-size:13px}.log time{color:#dfb979;margin-right:6px}.person{display:flex;justify-content:space-between;align-items:center;gap:9px;padding:10px;border-bottom:1px solid #38475b}.person:last-child{border-bottom:0}.tag{font-size:11px;color:#c0cbd7}.modalwrap{position:fixed;inset:0;background:#000a;display:grid;place-items:center;padding:18px;z-index:50}.modal{width:min(100%,540px);max-height:90vh;overflow:auto;background:#1c2839;border:1px solid #ae8b56;border-radius:16px;padding:22px;display:grid;gap:15px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field{display:grid;gap:5px;font-size:13px}.field input,.field select{min-width:0;width:100%;background:#0b1623;color:white;border:1px solid #58677b;border-radius:8px;padding:10px}blockquote{margin:0;padding:10px 12px;background:#e8bc7120;border-left:3px solid #e8bc71;font-size:13px}.footer{text-align:center;color:#8f9eaf;margin-top:18px;font-size:11px}.empty{font-size:13px;color:var(--muted);padding:14px 0}.result{color:var(--gold);font-weight:700}.notice{border:1px solid #785d38;background:#9d7a3120;padding:10px;border-radius:8px;font-size:12px;color:#e4c596}@media(max-width:770px){.wrap{padding:12px 11px 60px}.grid{grid-template-columns:1fr}.panel{padding:14px}.cities{grid-template-columns:repeat(3,1fr)}.city{min-height:84px}header{align-items:flex-start}.formgrid{grid-template-columns:1fr}}
-</style>
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#241f1a"><title>삼국지: 무명의 영웅 — 난세의 시작</title><style>
+:root{--ink:#27241f;--wine:#912f2c;--gold:#b58a4d;--paper:#f1e7cf;--paper2:#e4d4b1;--muted:#796d57}*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:ui-serif,"Noto Serif KR","Apple SD Gothic Neo",serif}body{color:var(--ink);background:#1d211f;background-image:radial-gradient(ellipse at 70% 5%,#48554b 0%,transparent 55%),linear-gradient(#1c2425,#10171b);font-size:15px;line-height:1.65}button,input{font:inherit}button{cursor:pointer}button:disabled{opacity:.5;cursor:not-allowed}.shell{max-width:1140px;margin:auto;padding:18px 16px 40px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:15px;color:#e8d9b9}.brand{letter-spacing:.12em;font-size:19px;font-weight:900}.brand small{display:block;font:11px sans-serif;letter-spacing:.25em;color:#c6ab81}.top button,.tabs button,.plain{background:#ffffff12;border:1px solid #a9987640;color:#e8d9b9;border-radius:9px;padding:9px 13px}.layout{display:grid;grid-template-columns: minmax(0,1fr) 276px;gap:18px}.sheet{position:relative;overflow:hidden;background:linear-gradient(125deg,#f5ebd6f7,#e9d8b8f7);border:1px solid #c9ae7a;border-radius:6px;box-shadow:0 14px 35px #0007, inset 0 0 55px #90774a29}.sheet:before{content:"";position:absolute;inset:5px;pointer-events:none;border:1px solid #8e6e4926}.hero{min-height:190px;display:flex;justify-content:flex-end;flex-direction:column;padding:28px;background:linear-gradient(0deg,#1a1715 0%,#252a2999 68%,#1f2c2766),radial-gradient(ellipse at 70% 52%,#b7a07888,transparent 49%),linear-gradient(143deg,#172729,#59645c 54%,#222c2f);color:#f6e5c1;position:relative;overflow:hidden}.hero:before{content:"山  川  亂  世";position:absolute;right:15px;top:-28px;font-size:90px;opacity:.09;writing-mode:vertical-rl;letter-spacing:4px}.hero .kicker{font-size:12px;letter-spacing:.19em;color:#e4bc8a}.hero h1{font-size:clamp(25px,4vw,43px);line-height:1.1;margin:8px 0}.hero p{margin:4px 0;font-size:13px;color:#e5d3b8}.story{padding:22px 30px 28px;min-height:350px}.date{font-size:12px;color:#94633d;font-weight:800;letter-spacing:.1em}.title{font-size:clamp(23px,3vw,32px);margin:6px 0 13px}.narrative{white-space:pre-line;font-size:16px;line-height:1.95;max-width:66ch}.line{width:62px;height:2px;background:#a94437;margin:19px 0}.choices{display:grid;gap:10px;margin:20px 0}.choice{display:flex;align-items:flex-start;text-align:left;gap:13px;width:100%;color:#3c3225;background:#faf3e5;border:1px solid #cbb995;border-radius:6px;padding:12px 15px;transition:.15s}.choice:hover{background:#f4dfbf;border-color:#a44b39}.number{display:grid;place-items:center;min-width:28px;height:28px;background:#843e31;color:#fbe9ce;border-radius:50%;font-size:13px;font-weight:bold}.choice strong{display:block;font-size:15px}.choice small{display:block;color:#806a50;font-size:12px;margin-top:3px}.pillrow{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0 4px}.pill{font:12px sans-serif;border:1px solid #b69d74;color:#775b33;border-radius:20px;padding:5px 9px}.side{padding:18px 16px}.side h2{margin:0 0 12px;font-size:18px}.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat{padding:8px;background:#e1d0ab66;border:1px solid #bba77c70;border-radius:5px}.stat b{font-size:20px;color:#963e31}.stat span{font-size:11px;color:#75644d;display:block}.side p{font-size:13px}.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:15px 0}.tabs button{font-size:13px;padding:8px 12px}.tabs button.active{background:#e2c393;color:#2d281f;border-color:#d1a76c}.tabpage{padding:18px 22px;min-height:180px}.entry{border-left:2px solid #ae8b5a;margin-left:9px;padding:0 0 12px 16px;position:relative}.entry:before{content:"";position:absolute;left:-6px;top:7px;background:#9c3e31;width:10px;height:10px;border-radius:50%}.entry time{display:block;font:12px sans-serif;color:#855836}.entry p{margin:3px 0 0;font-size:14px}.relation{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid #b9a78070;padding:10px 0;font-size:14px}.relation b{color:#9d4333}.map{width:100%;height:auto;background:#e1d1b0;border:1px solid #b8a17b;border-radius:8px}.map text{font-size:10px;fill:#423a2c;font-weight:700}.map circle{fill:#9b483b;stroke:#fff0d1;stroke-width:2}.footnote{font-size:12px;color:#76664d}.start{max-width:580px;margin:36px auto}.start .story{min-height:auto}.start label{display:block;margin-top:14px;font-weight:bold}.start input{width:100%;background:#fff9ea;border:1px solid #bbaa86;border-radius:6px;padding:12px;margin-top:5px;color:#332d23}.primary{background:#963b30;border:1px solid #793126;color:#fff0db;padding:12px 17px;border-radius:6px;margin-top:15px;font-weight:bold}.battle{background:#e6d4b3;border:1px solid #b9a075;padding:17px;border-radius:7px;margin:12px 0}.hp{height:11px;border-radius:9px;background:#baae99;overflow:hidden}.hp>i{height:100%;background:#aa5146;display:block}.hp.mine>i{background:#59796a}.combatlog{font-size:14px;white-space:pre-line;color:#5b4938}.outcome{background:#d9c19588;border-left:4px solid #9e4e3e;padding:13px;margin:10px 0}.muted{color:#766650}.end{font-weight:bold;color:#913f32;font-size:19px}.footer{color:#c2b296;text-align:center;font:11px sans-serif;margin-top:26px} @media(max-width:750px){.shell{padding:9px 9px 28px}.layout{display:flex;flex-direction:column}.side{order:-1}.hero{min-height:145px;padding:20px}.story{padding:20px 17px}.side{padding:12px}.side .stats{grid-template-columns:repeat(5,1fr);gap:4px}.stat{padding:5px;text-align:center}.stat b{font-size:16px}.stat span{font-size:10px}.top .brand{font-size:16px}.tabs{overflow-x:auto;flex-wrap:nowrap}.tabs button{white-space:nowrap}.narrative{font-size:15px}.choice{padding:11px}.top{padding:5px}} </style>
 <style>
-:root{color-scheme:light;--bg:#e9deca;--panel:#f7f0df;--line:#d1bea0;--gold:#976024;--text:#292a25;--muted:#766b5c;--red:#a43c31;--green:#52776b}
-body{background:linear-gradient(#efe8d9cc,#e4d5bccc),repeating-linear-gradient(105deg,#8c776b0a 0px,#8c776b0a 2px,transparent 3px,transparent 8px);color:var(--text);font-family:"Apple SD Gothic Neo","Noto Serif KR",system-ui,sans-serif}
-header{background:linear-gradient(120deg,#3d493f,#222f2c);border:1px solid #a99a78;border-radius:14px;padding:18px 20px;color:#f6e8c7;box-shadow:0 10px 25px #493c2925}
-header h1{font-family:Georgia,"Songti SC",serif;letter-spacing:2px;color:#f2ddb0}
-header .sub{color:#d7c7a8}
-.panel,.modal{background:linear-gradient(137deg,#fff9eb,#f0e4cb);border:1px solid #cbb99a;box-shadow:0 4px 18px #3d30231c;border-radius:13px;color:#2d3029}
-h1,h2,h3{font-family:Georgia,"Songti SC","Noto Serif KR",serif}
-h2{color:#593e2b}.sub,.small,.muted{color:#786b59}
-.btn{background:#f6eedf;border:1px solid #cbb99b;color:#433628;border-radius:9px;min-height:43px;box-shadow:0 2px 0 #b6a78955}
-.btn.gold,.btn.active{background:linear-gradient(145deg,#a34235,#7b2922);border:1px solid #70231b;color:#fff3dc}
-.btn.ghost{background:#ffffff12;color:#f3e6cd;border-color:#ac9878}
-.pill{background:#ede0c5;border:1px solid #cbb895;color:#593f30}
-.notice,blockquote{background:#eee2c9;color:#5c503e;border-color:#c7b18c}
-.stat .bar,.bar{background:#dacaaa}
-.bar>div{background:linear-gradient(90deg,#6b877a,#a4a06a)}
-.city,.person{background:#f3e8d3;color:#332f27;border-color:#c9b795}
-.city.here{border-color:#a13f34;background:#f9eddb}
-.city .owner,.city .tag,.tag{color:#786b59}
-input,select{background:#fff8eb;color:#342f27;border-color:#cab799}
-.tabbar{gap:5px;overflow-x:auto;flex-wrap:nowrap;padding-bottom:7px}
-.tabbar .btn{flex:0 0 auto;font-size:13px;white-space:nowrap;padding:9px 12px}
-.footer{color:#786b59}
-.parchment-map{margin-top:15px;background:#e8dbc0;border:1px solid #b9a582;border-radius:13px;padding:10px;box-shadow:inset 0 0 25px #87795a25}
-.map-scroll svg{display:block;width:100%;height:auto;max-height:540px}
-.map-pin{cursor:pointer;outline:none}.map-pin:focus circle{stroke:#282b29;stroke-width:1.5}
-.map-key{display:flex;flex-wrap:wrap;gap:7px 13px;padding:8px 10px;color:#5b4e3b;font-size:11px}
-.map-key span{display:inline-flex;gap:5px;align-items:center}.map-key i{width:10px;height:10px;border-radius:50%;display:inline-block;border:1px solid #fff}
-.map-detail{background:#fbf4e4;border:1px solid #cdb895;border-radius:12px;padding:14px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:12px}
-.map-detail strong{font-size:19px;color:#563c2d}.map-detail span{flex:1;min-width:155px;color:#655848}.map-detail em{font-style:normal;color:#a13e31}
-.map-note{font-size:11px;color:#85755f;margin-top:9px}
-.chronicle-summary{display:flex;flex-wrap:wrap;gap:12px;padding:13px 2px;color:#736149}.chronicle-summary b{color:#8f3b30}
-.chronicle{border-left:2px solid #ae9476;margin:15px 0 6px 9px;padding-left:15px}
-.chronicle-header{font-weight:800;color:#7c342c;font-size:14px;margin:14px 0 11px}
-.history-entry{position:relative;background:#f8eedb;border:1px solid #d8c4a5;border-radius:10px;padding:10px 14px;margin:0 0 9px}
-.history-entry:before{content:"";position:absolute;left:-22px;top:17px;width:10px;height:10px;border-radius:50%;background:#ac8766;border:2px solid #f8eedb}
-.history-entry.major{background:#f2e1c2;border-color:#bfa17c}
-.history-entry.major:before{background:#a43d34}
-.history-entry time{display:block;color:#9c4637;font-weight:700;font-size:12px;margin-bottom:5px}
-.history-entry p{margin:0;line-height:1.55;font-size:14px}
-@media(max-width:640px){header{padding:12px}.panel{padding:13px}.map-key{font-size:10px}.map-detail{align-items:stretch;flex-direction:column}.map-detail .btn{width:100%}}
+:root{--ink:#e9e3cf;--wine:#bb6047;--gold:#ddb16c;--paper:#242d38;--paper2:#303b46;--muted:#b7b5ae}
+html,body{font-family:system-ui,"Apple SD Gothic Neo",sans-serif}
+body{color:#e9e2ce;background:#111b25;background-image:linear-gradient(0deg,#162534,#0e1722)}
+.shell{max-width:1000px}
+.sheet{background:#263543;border:3px solid #84918a;border-radius:1px;box-shadow:0 0 0 3px #1a212a,6px 7px 0 #090e1580;color:#f2e9d8}
+.sheet:before{border:2px solid #3b4c57;inset:4px}
+.hero{background:#1d2b38;min-height:220px;padding:18px 22px;border-bottom:4px solid #a8916f;isolation:isolate}
+.pixel-scene{position:absolute;inset:0;width:100%;height:100%;image-rendering:pixelated;object-fit:cover;z-index:-2;opacity:.95}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#172330e8,#15253360 60%,#18253217);z-index:-1}
+.hero:before{display:none}
+.hero .kicker,.hero p{color:#f5d9a6;text-shadow:2px 2px 0 #1d2834}
+.hero h1{font-family:Georgia,serif;color:#fff5da;text-shadow:3px 3px 0 #1a2631;letter-spacing:.06em}
+.top{color:#f8dca5}
+.brand{font-weight:900;letter-spacing:.04em}
+.top button,.tabs button,.plain{background:#2a3b4c;border:2px solid #80909a;color:#f6e5c8;border-radius:1px;box-shadow:3px 3px 0 #111a24}
+.tabs button.active{background:#a3714e;color:#fff3d2;border-color:#f0ca82}
+.story,.tabpage{color:#f3e7cf}
+.title{color:#f6ddb0}
+.date{color:#e6b579}
+.line{height:4px;background:#c9664a}
+.narrative{color:#f4ebd7}
+.choice{background:#334352;border:2px solid #718795;color:#f7e9d5;border-radius:0;box-shadow:3px 3px 0 #16202a}
+.choice strong{color:#ffe3ae}
+.choice small{color:#c5c6bc}
+.choice:hover,.choice:focus{background:#415a67;border-color:#efc47b}
+.number{background:#ad5944;color:white;border-radius:0;border:2px solid #db9a65}
+.side h2,.tabpage h2{color:#f8ddb1}
+.stat{background:#192836;border:2px solid #4b6270;border-radius:1px}
+.stat b{color:#f1bf7b}
+.stat span,.side p,.muted{color:#c9bcaa}
+.pill{color:#e5c79a;border-color:#9d856c;border-radius:0}
+.relation{border-bottom:1px solid #637582}.relation b{color:#eab17a}
+.entry{border-left:3px solid #b79966}.entry time{color:#e5bb80}.entry:before{background:#d5785c;border-radius:0}
+.map{border-radius:0;image-rendering:pixelated}
+.footnote{color:#c6beae}
+.start .story{background:#263543}
+.start input{background:#172631;color:#fff2da;border:2px solid #728d97;border-radius:1px}
+.primary{background:#a6533e;border:2px solid #e7b47b;border-radius:0;color:#ffead0;box-shadow:3px 3px 0 #111b25}
+.battle{background:#1a2a35;border:2px solid #7b91a0;color:#f2e5ce;border-radius:0}
+.pixel-duel{width:100%;height:150px;image-rendering:pixelated;object-fit:cover;border:2px solid #9b896d;display:block;margin-bottom:14px}
+.hp{background:#4b4750;border-radius:0}.hp>i{background:#c96850}.hp.mine>i{background:#68a59d}
+.combatlog{color:#e2c9a9}.outcome{color:#eadac2;background:#334652;border-left-color:#d6a266}
+.end{color:#f5c180}.footer{color:#9daeb6}
+@media(max-width:750px){.hero{min-height:175px}.story{padding:18px 14px}.pixel-duel{height:125px}}
 </style>
-</head><body><div class="wrap"><header><div><h1>三國志 · 무명의 영웅</h1><div class="sub">장수로 태어나, 스스로 역사를 써라</div></div><div class="row wraprow"><button class="btn ghost" id="save">저장</button><button class="btn ghost" id="reset">새 게임</button></div></header><div id="app"></div><div class="footer">비공식 창작 삼국지 전략 RPG · 브라우저 로컬 저장 · 싱글 플레이</div></div><div id="overlay"></div><script>
-'use strict';
-const KEY='sanguo-hero-v1';const CITIES=[{name:'탁군',owner:'유비',troops:850},{name:'북평',owner:'공손찬',troops:1200},{name:'업',owner:'원소',troops:1800},{name:'진류',owner:'조조',troops:1600},{name:'허창',owner:'조조',troops:1900},{name:'낙양',owner:'동탁',troops:2300},{name:'장안',owner:'동탁',troops:1900},{name:'하비',owner:'도겸',troops:1100},{name:'수춘',owner:'원술',troops:1000},{name:'양양',owner:'유표',troops:1400},{name:'강하',owner:'유표',troops:900},{name:'건업',owner:'손견',troops:1600}];
-const PEOPLE=[{name:'유비',loc:'탁군',faction:'유비',power:75,brain:73},{name:'관우',loc:'탁군',faction:'유비',power:98,brain:72},{name:'장비',loc:'탁군',faction:'유비',power:99,brain:35},{name:'조운',loc:'북평',faction:'공손찬',power:96,brain:77},{name:'공손찬',loc:'북평',faction:'공손찬',power:78,brain:60},{name:'원소',loc:'업',faction:'원소',power:69,brain:70},{name:'조조',loc:'진류',faction:'조조',power:72,brain:92},{name:'하후돈',loc:'진류',faction:'조조',power:90,brain:62},{name:'순욱',loc:'허창',faction:'조조',power:14,brain:97},{name:'동탁',loc:'낙양',faction:'동탁',power:83,brain:55},{name:'여포',loc:'낙양',faction:'동탁',power:100,brain:28},{name:'도겸',loc:'하비',faction:'도겸',power:35,brain:68},{name:'원술',loc:'수춘',faction:'원술',power:65,brain:48},{name:'유표',loc:'양양',faction:'유표',power:42,brain:74},{name:'손견',loc:'건업',faction:'손견',power:92,brain:76},{name:'주유',loc:'건업',faction:'손견',power:72,brain:96}];
-const STATS=['통솔','무력','지력','정치','매력'];const el=id=>document.getElementById(id);const rnd=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;const clamp=(n,min,max)=>Math.min(max,Math.max(min,n));const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function fresh(name='무명',origin='무관 집안',talent='용맹'){let s={name:name.slice(0,12),origin,talent,year:184,month:1,turn:0,age:18,loc:'탁군',faction:null,rank:'떠돌이 장수',gold:500,prestige:0,energy:100,troops:150,morale:70,stats:{통솔:55,무력:55,지력:55,정치:55,매력:55},relations:{},cities:structuredClone(CITIES),people:structuredClone(PEOPLE),logs:[],victories:0,duels:0};let focus={'용맹':['무력',20],'지략':['지력',20],'통솔':['통솔',20],'인덕':['매력',20]}[talent];s.stats[focus[0]]+=focus[1];addLog(s,`${s.name}, ${origin} 출신의 젊은 장수가 탁군에 모습을 드러냈다.`);return s}
-let g=null,tab='활동';try{const stored=JSON.parse(localStorage.getItem(KEY));if(stored&&stored.stats&&stored.cities&&stored.people)g=stored}catch(e){}function save(){if(g){try{localStorage.setItem(KEY,JSON.stringify(g));toast('진행 상황이 저장되었습니다.')}catch(e){toast('저장에 실패했습니다. 브라우저 저장 공간을 확인하세요.')}}}function persist(){try{localStorage.setItem(KEY,JSON.stringify(g))}catch(e){}}function addLog(s,msg){s.logs.unshift({date:`${s.year}년 ${s.month}월`,msg});s.logs=s.logs.slice(0,500)}function toast(t){const area=el('toast');if(area)area.textContent=t}
-function city(){return g.cities.find(c=>c.name===g.loc)}function owner(){return city().owner}function tick(months=1){for(let k=0;k<months;k++){g.turn++;g.month++;if(g.month>12){g.month=1;g.year++;g.age++}g.energy=clamp(g.energy+13,0,100);g.gold+=g.faction?80:25;if(g.turn%3===0){for(const c of g.cities){c.troops=clamp(c.troops+rnd(20,90),50,4500)}g.morale=clamp(g.morale+6,20,100)}if(g.turn%6===0){const rivals=g.cities.filter(c=>c.owner!==g.faction&&c.owner!=='독립');if(rivals.length){const r=rivals[rnd(0,rivals.length-1)];addLog(g,`${r.name}의 ${r.owner} 세력이 병력을 확충했다.`)}}}}function action(cost,fn){if(g.energy<cost){toast('행동력이 부족합니다. 휴식하세요.');return}g.energy-=cost;fn();tick();persist();render()}
-function train(stat){action(22,()=>{const inc=rnd(1,3),old=g.stats[stat];g.stats[stat]=clamp(old+inc,1,100);g.prestige+=3;addLog(g,`${stat} 수련을 마쳤다. ${stat} ${old} → ${g.stats[stat]}.`)})}
-function rest(){g.energy=clamp(g.energy+55,0,100);g.morale=clamp(g.morale+8,0,100);tick();addLog(g,'여관에서 휴식을 취하며 기력을 회복했다.');persist();render()}
-function patrol(){action(25,()=>{let earn=rnd(60,130)+Math.floor(g.stats.정치*.5);g.gold+=earn;g.prestige+=rnd(4,9);addLog(g,`지역의 치안을 도왔다. 금 ${earn}과 명성 획득.`)})}
-function recruit(){if(g.gold<120){toast('모병에는 금 120이 필요합니다.');return}action(25,()=>{const n=rnd(55,110)+Math.floor(g.stats.매력*.35);g.gold-=120;g.troops+=n;addLog(g,`금 120을 사용해 의용군 ${n}명을 모집했다.`)})}
-function move(target){if(g.loc===target)return;action(20,()=>{g.loc=target;addLog(g,`${target}(으)로 이동했다. 현재 지배 세력: ${owner()}.`)})}
-function socialize(i){const p=g.people[i];if(p.loc!==g.loc)return;action(18,()=>{const plus=rnd(9,16)+Math.floor(g.stats.매력/30);g.relations[p.name]=clamp((g.relations[p.name]||0)+plus,0,100);g.prestige+=2;addLog(g,`${p.name}과(와) 교류했다. 친밀도 +${plus} (${g.relations[p.name]}).`)})}
-function spar(i){const p=g.people[i];if(p.loc!==g.loc)return;action(28,()=>{const mine=g.stats.무력+rnd(-22,22),enemy=p.power+rnd(-18,18);if(mine>=enemy){g.stats.무력=clamp(g.stats.무력+2,0,100);g.prestige+=16;g.duels++;g.relations[p.name]=clamp((g.relations[p.name]||0)+7,0,100);addLog(g,`${p.name}과의 일기토에서 승리했다! 무력 +2, 명성 +16.`)}else{g.stats.무력=clamp(g.stats.무력+1,0,100);g.morale=clamp(g.morale-5,0,100);addLog(g,`${p.name}에게 일기토에서 패배했지만 무예를 배웠다. 무력 +1.`)}})}
-function join(){const o=owner();if(o===g.name){toast('이미 자신의 세력을 이끌고 있습니다.');return}if(g.faction){toast('이미 다른 세력에 속해 있습니다. 독립한 뒤 새로 합류할 수 있습니다.');return}if(o==='독립'){toast('주인 없는 도시에는 임관할 수 없습니다.');return}if(g.prestige<15){toast('세력에 합류하려면 명성 15가 필요합니다.');return}action(18,()=>{g.faction=o;g.rank='군관';g.gold+=180;addLog(g,`${o}군에 합류했다. 첫 임무를 맡고 금 180을 받았다.`)})}
-function promote(){if(!g.faction){toast('먼저 어느 세력에 합류해야 합니다.');return}const ranks=['군관','교위','장군','대장군'];let ix=ranks.indexOf(g.rank);if(ix<0||ix>=3){toast('현재 더 높은 관직이 없습니다.');return}let need=[50,170,400][ix];if(g.prestige<need){toast(`승진에는 명성 ${need}이 필요합니다.`);return}action(16,()=>{g.rank=ranks[ix+1];g.gold+=200*(ix+1);addLog(g,`공적을 인정받아 ${g.rank}(으)로 승진했다!`)})}
-function independent(){if(g.faction===g.name){toast('이미 독립 군주입니다.');return}if(g.prestige<90||g.troops<400){toast('독립에는 명성 90과 병력 400이 필요합니다.');return}if(g.gold<300){toast('독립에는 금 300이 필요합니다.');return}action(35,()=>{g.gold-=300;g.faction=g.name;g.rank='군주';addLog(g,`${g.name}이(가) 독립을 선포했다! 자신의 세력을 세우고 천하를 노린다.`)})}
-function battle(){if(g.troops<80){toast('최소 병력 80이 필요합니다.');return}if(g.gold<80){toast('원정 비용 금 80이 필요합니다.');return}let c=city();if(c.owner===g.faction&&g.faction){toast('아군의 도시입니다. 다른 도시로 이동하세요.');return}action(35,()=>{g.gold-=80;const atk=g.troops*(0.55+g.stats.통솔/110)*(g.morale/85)*rnd(85,115)/100,def=c.troops*(.65+rnd(55,95)/110);const win=atk>def;let casualties=rnd(12,30)/100;const lost=Math.max(15,Math.floor(g.troops*(win?casualties:casualties+.16)));g.troops=Math.max(0,g.troops-lost);g.morale=clamp(g.morale+(win?8:-15),10,100);if(win){let former=c.owner;c.owner=g.faction||'독립';c.troops=Math.max(100,Math.floor(g.troops*.35));g.prestige+=55;g.gold+=rnd(120,240);g.victories++;if(!g.faction){g.faction=g.name;g.rank='군주';c.owner=g.name;addLog(g,`독립 장수로서 ${c.name}을 점령하여 ${g.name} 세력을 건국했다!`)}else addLog(g,`${c.name} 공략 성공! ${former} 세력을 물리쳤다. 전사 ${lost}명, 명성 +55.`)}else{c.troops=Math.max(100,c.troops-Math.floor(c.troops*.15));addLog(g,`${c.name} 공략 실패. 전사 ${lost}명. 병력을 정비해야 한다.`)}})}
-function render(){if(!g){el('app').innerHTML=`<section class="panel" style="max-width:620px;margin:26px auto;text-align:center;padding:35px 20px"><h2 style="font-size:27px">당신의 삼국지가 시작된다</h2><p class="muted" style="margin:16px 0">184년, 황건적의 난이 일어난 혼란의 시대.<br>무명의 장수로 태어나 명성을 쌓고 세력을 일으켜라.</p><button class="btn gold" onclick="showCreator()">새로운 장수 만들기</button></section>`;el('overlay').innerHTML='';return}const ownCount=g.cities.filter(c=>c.owner===g.faction&&g.faction).length;const head=`<div class="panel"><div class="row"><div><h2>${esc(g.name)}</h2><div class="sub">${esc(g.origin)} · ${esc(g.talent)} · ${g.age}세</div></div><span class="pill">${esc(g.rank)}</span></div><div class="gap"></div><div class="row"><span class="small">소속</span><b>${esc(g.faction||'떠돌이 장수')}</b></div><div class="row"><span class="small">현재 도시</span><b>${esc(g.loc)}</b></div><div class="row"><span class="small">연월</span><b>${g.year}년 ${g.month}월</b></div><div class="gap"></div>${STATS.map(n=>`<div class="stat"><label>${n}</label><div class="bar"><div style="width:${g.stats[n]}%"></div></div><div class="num">${g.stats[n]}</div></div>`).join('')}<div class="gap"></div><div class="row wraprow"><span class="pill">금 ${g.gold}</span><span class="pill">병력 ${g.troops}</span><span class="pill">명성 ${g.prestige}</span><span class="pill">행동력 ${g.energy}</span></div><div class="gap"></div><div class="row"><span class="small">사기 ${g.morale} / 승전 ${g.victories} / 일기토 ${g.duels}</span><span class="small">영토 ${ownCount}개</span></div><div class="gap"></div><div class="notice" id="toast">행동을 선택하면 한 달이 흐릅니다. 행동력은 매달 일부 회복됩니다.</div></div>`;
-const tabs=['활동','천하 지도','인물','세력','연대기'];el('app').innerHTML=`<div class="grid"><div class="stack">${head}<div class="panel"><h2>전언</h2><div class="gap"></div><div class="log">${g.logs.slice(0,5).map(l=>`<p><time>${l.date}</time>${esc(l.msg)}</p>`).join('')}</div></div></div><section class="panel"><div class="tabbar">${tabs.map(t=>`<button class="btn ${tab===t?'active':''}" onclick="changeTab('${t}')">${t}</button>`).join('')}</div><div id="content">${content()}</div></section></div>`}
-function content(){const o=owner();if(tab==='활동')return `<h2>장수의 하루</h2><p class="sub">${esc(g.loc)} · ${esc(o)} 지배 지역에서 행동을 선택하세요.</p><div class="gap"></div><h3>능력 단련</h3><div class="gap"></div><div class="actions">${STATS.map(s=>`<button class="btn" onclick="train('${s}')">${s} 수련 <small>(행동력 22)</small></button>`).join('')}</div><div class="gap"></div><h3>활동</h3><div class="gap"></div><div class="actions"><button class="btn" onclick="patrol()">치안 활동 · 금 획득</button><button class="btn" onclick="recruit()">의용군 모집 · 금 120</button><button class="btn" onclick="rest()">여관 휴식 · 회복</button><button class="btn gold" onclick="battle()">${g.faction?'도시 공격':'의용군으로 거병'} · 금 80</button></div><div class="gap"></div><blockquote>도시 공격에는 병력과 통솔, 사기가 영향을 미칩니다. 재야 장수도 첫 도시를 함락시키면 자동으로 독립 세력을 건국합니다.</blockquote>`;
-if(tab==='천하 지도')return `<h2>군웅할거의 천하</h2><p class="sub">도시를 선택하면 한 달을 소모하여 이동합니다. 지배 세력과 주둔 병력을 확인할 수 있습니다.</p><div class="gap"></div><div class="cities">${g.cities.map(c=>`<button class="city ${g.loc===c.name?'here':''}" onclick="move('${c.name}')" ${g.loc===c.name?'disabled':''}><span class="name">${c.name}</span><span class="owner">${esc(c.owner)} · ${c.troops}명</span><span class="tag">${g.loc===c.name?'● 현재 위치':'이동 →'}</span></button>`).join('')}</div>`;
-if(tab==='인물'){let ppl=g.people.filter(p=>p.loc===g.loc);return `<h2>${esc(g.loc)}의 인물</h2><p class="sub">친밀도를 쌓으면 인연을 맺을 수 있습니다. 높은 무력의 장수와 대련하면 위험하지만 성장할 수 있습니다.</p><div class="gap"></div>${ppl.length?ppl.map(p=>{let i=g.people.indexOf(p);return `<div class="person"><div><b>${p.name}</b> <span class="tag">${p.faction}</span><div class="small">무력 ${p.power} · 지력 ${p.brain} · 친밀도 ${g.relations[p.name]||0}/100</div></div><div class="row wraprow"><button class="btn" onclick="socialize(${i})">교류</button><button class="btn gold" onclick="spar(${i})">일기토</button></div></div>`}).join(''):'<p class="empty">이 도시에는 알려진 장수가 없습니다.</p>'}`}
-if(tab==='세력')return `<h2>출세와 건국</h2><div class="gap"></div><div class="actions"><button class="btn" onclick="join()">${esc(o)}에 임관 <small>명성 15+</small></button><button class="btn" onclick="promote()">승진 청원 <small>명성 필요</small></button><button class="btn gold" onclick="independent()">독립 선포 <small>명성 90 · 병력 400 · 금 300</small></button></div><div class="gap"></div><blockquote>세력에 합류한 뒤에도 독립할 수 있습니다. 소속된 상태에서 도시를 공격하면 점령지는 현재 세력의 영토가 됩니다. 독립 선언 후에는 자신의 세력으로 점령합니다.</blockquote><div class="gap"></div><h3>천하의 세력</h3><div class="gap"></div>${[...new Set(g.cities.map(c=>c.owner))].map(f=>`<div class="row" style="padding:9px;border-bottom:1px solid var(--line)"><b>${esc(f)}</b><span class="small">영토 ${g.cities.filter(c=>c.owner===f).length}개 · 병력 ${g.cities.filter(c=>c.owner===f).reduce((x,c)=>x+c.troops,0)}명</span></div>`).join('')}`;
-return `<h2>나의 연대기</h2><div class="gap"></div><div class="log" style="max-height:none">${g.logs.map(l=>`<p><time>${l.date}</time>${esc(l.msg)}</p>`).join('')}</div>`}
-function changeTab(t){tab=t;render()}function showCreator(){el('overlay').innerHTML=`<div class="modalwrap"><div class="modal"><h2>장수 탄생</h2><p class="sub">출신과 재능을 정해 184년 탁군에서 출발합니다.</p><div class="field"><label for="heroName">장수 이름</label><input id="heroName" maxlength="12" value="무명"></div><div class="formgrid"><div class="field"><label for="origin">출신</label><select id="origin"><option>무관 집안</option><option>농민</option><option>상인</option><option>몰락 귀족</option><option>유랑객</option></select></div><div class="field"><label for="talent">특기</label><select id="talent"><option>용맹</option><option>지략</option><option>통솔</option><option>인덕</option></select></div></div><button class="btn gold" onclick="startGame()">천하에 나서기</button><button class="btn ghost" onclick="el('overlay').innerHTML=''">닫기</button></div></div>`}function startGame(){g=fresh(el('heroName').value.trim()||'무명',el('origin').value,el('talent').value);tab='활동';persist();render()}
-
-const CITY_POS = {
- '탁군':[76,20],'북평':[87,14],'업':[66,33],'진류':[57,47],
- '허창':[49,56],'낙양':[39,50],'장안':[24,47],'하비':[75,54],
- '수춘':[66,68],'양양':[39,71],'강하':[52,79],'건업':[75,83]
+</head><body><div id="app"></div><script>
+'use strict';const KEY='samguk-story-v1';const $=id=>document.getElementById(id);let S=null,tab='연대기';const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function initial(name){return{name,scene:'intro',year:184,month:3,stats:{무력:48,지력:47,통솔:45,매력:48,명성:0},rel:{유비:0,관우:0,장비:0,아란:0,황건적:0},flags:{},hp:100,enemy:70,guard:false,turn:0,combatlog:'',log:[{time:'184년 3월',text:`${name}, 탁군 근처의 작은 마을에서 여행을 시작하다.`}],ending:false}}
+const scenes={
+ intro:{title:'핏빛 황혼',date:'184년 3월 · 탁군 외곽',text:'여행길에 들른 마을에 황건적이 들이닥쳤다. 불길 사이로 한 소년이 쓰러진 어머니를 붙잡고 울고 있다.\n\n멀리서 고함이 들린다. “의병을 모으는 유비라는 자가 근처에 있다!”\n\n무명의 여행자인 당신에게도 선택의 시간이 찾아왔다.',choices:[['불길 속으로 뛰어들어 사람들을 구한다','위험하지만 주민들의 신뢰를 얻을 수 있다','rescue'],['유비 일행을 찾아 지원을 청한다','인맥과 지략으로 위기를 넘긴다','seekliu'],['우선 몸을 피하고 정세를 살핀다','살아남아 더 큰 기회를 노린다','escape']]},
+ rescued:{title:'불길 속의 약속',date:'184년 3월 · 폐허가 된 마을',text:'불길 속에서 사람들을 끌어낸 당신은 팔에 상처를 입었다. 목숨을 건진 소녀 아란이 마른 손으로 당신의 소매를 붙든다.\n\n“은혜를 잊지 않을게요. 그런데 어머니는 아직 저 안에 있어요.”\n\n무장한 황건적 한 명이 골목을 막아선다.',choices:[['칼을 뽑아 적을 막아선다','일기토: 위험하지만 무력을 증명할 기회','fight'],['아란을 데리고 우회로로 빠진다','기지를 발휘해 생존자를 구한다','outsmart']]},
+ seekliu:{title:'짚신을 신은 사내',date:'184년 3월 · 탁군 숲길',text:'숲길에서 세 사내와 마주친다. 짚신을 신은 유비, 긴 수염의 관우, 우레 같은 목소리의 장비다.\n\n유비가 말한다. “마을이 위태롭다고? 어떤 길이 가장 빠르겠소?”',choices:[['직접 앞장서서 지름길을 안내한다','유비의 신뢰와 통솔 경험을 얻는다','guide'],['황건적의 동선을 분석해 매복을 제안한다','지략과 관우의 평가가 달라진다','ambush']]},
+ escaped:{title:'떠난 자의 밤',date:'184년 3월 · 마을 밖 고갯길',text:'당신은 어둠을 틈타 마을을 벗어났다. 그러나 산등성이에서 불꽃이 사그라드는 모습을 바라보자 마음이 무거워진다.\n\n고갯길에 부상당한 병사가 쓰러져 있다. 그는 누군가에게 전달해야 할 서찰을 품고 있다.',choices:[['부상병을 치료하고 서찰을 대신 전한다','인연이 시작될 수 있다','letter'],['서찰만 챙기고 급히 떠난다','지름길을 얻지만 뒤에 문제가 생길 수 있다','takeletter']]},
+ crossroads:{title:'새로운 깃발',date:'184년 4월 · 의병 진영',text:s=>`봉기는 진압되지 않았고 곳곳에서 새로운 의병이 모이고 있다. 당신의 행동은 이미 사람들의 입에 오르기 시작했다.\n\n${s.flags.saved?'아란은 당신을 알아보고 작게 고개를 숙인다. ':''}${s.flags.fled?'마을의 불길은 아직도 기억에 남아 있다. ':''}유비는 당신을 바라보며 묻는다. “그대는 앞으로 어떤 길을 가겠소?”`,choices:[['유비의 의병에 합류한다','함께 싸우며 장수로 성장한다','join'],['떠돌이 장수로 남아 스스로 길을 찾는다','자유를 얻지만 후원자는 없다','wander']]},
+ joined:{title:'첫 번째 군령',date:'184년 5월 · 의병 진영',text:'유비는 당신에게 작은 병력을 맡긴다. 관우는 무기를 점검하고, 장비는 새로운 동료를 시험하듯 바라본다.\n\n정찰병이 황건적 잔당이 곡식 수송대를 습격할 것이라는 소식을 전한다.',choices:[['적의 앞길을 끊어 수송대를 지킨다','통솔 중심의 임무','convoy'],['장비와 함께 적의 우두머리를 친다','무력 중심의 임무','challenge']]},
+ wandering:{title:'홀로 걷는 길',date:'184년 5월 · 길 위',text:'의병의 진영을 떠나 홀로 길을 나섰다. 길가의 주막에서는 황건적을 토벌한다는 소식과 군벌들이 병사를 모은다는 소문이 뒤섞여 흘러나온다.\n\n한 상인이 황건적 잔당에게 빼앗긴 물자를 찾아 달라고 부탁한다.',choices:[['상인의 물자를 되찾으러 간다','용기와 실력을 시험한다','convoy'],['소문을 모아 무리의 약점을 파악한다','지략으로 사건을 해결한다','rumor']]},
+ final:{title:'난세의 첫 걸음',date:'184년 여름 · 탁군',text:s=>`황건적의 난은 아직 끝나지 않았다. 세상은 어지럽지만 당신의 이름을 기억하는 사람들은 조금씩 늘고 있다.\n\n${s.flags.joined?'유비의 깃발 아래 당신의 자리가 생겼다.':'어느 깃발에도 묶이지 않은 채 다음 여정을 준비한다.'}\n\n${s.flags.saved?'당신이 구했던 아란은 안전하게 살아남았다.':'마을에서의 선택은 오래도록 당신을 따라다닐 것이다.'}\n\n멀지 않은 미래에 동탁이 낙양을 뒤흔들 것이다. 그때 당신은 누구의 편에 설 것인가?`,choices:[]}
 };
-const FACTION_PALETTE=['#9e4e40','#4b756e','#b18845','#666c87','#866b5d','#7e8151','#a16d7c','#717b91','#756248','#ac7950'];
-function factionColor(name){
- const known=['유비','조조','손견','공손찬','원소','동탁','도겸','원술','유표','독립'];
- const i=known.indexOf(name);
- if(g && name===g.name)return '#bd9b54';
- if(i>=0)return FACTION_PALETTE[i];
- let h=0;for(let j=0;j<name.length;j++)h=(h*31+name.charCodeAt(j))>>>0;
- return FACTION_PALETTE[h%FACTION_PALETTE.length]
-}
-function inkMap(){
- let lines = `<path d="M9 43 Q16 19 35 25 T57 15 T94 24 L94 53 Q86 63 94 89 L70 96 Q57 90 43 94 L18 86 Q12 73 9 43Z" fill="#dbcbaa" stroke="#9e8c6d" stroke-width="1.4"/>
- <path d="M15 59 Q35 44 49 58 T85 71" fill="none" stroke="#7d9ea1" stroke-width="3" opacity=".38"/>
- <path d="M22 69 Q39 60 54 73 T88 83" fill="none" stroke="#7d9ea1" stroke-width="2" opacity=".34"/>
- <path d="M17 36 L33 24 L41 36 L48 26 L59 40" fill="none" stroke="#716a59" opacity=".35" stroke-width="2"/>
- <path d="M23 85 L33 70 L47 86 L58 72" fill="none" stroke="#716a59" opacity=".35" stroke-width="2"/>`;
- const dots=g.cities.map(c=>{
- const [x,y]=CITY_POS[c.name]||[50,50],here=c.name===g.loc,color=factionColor(c.owner);
- return `<g class="map-pin" data-city="${esc(c.name)}" onclick="mapSelect('${c.name}')" tabindex="0" role="button" aria-label="${esc(c.name)} 선택" onkeydown="if(event.key==='Enter')mapSelect('${c.name}')">
- ${here?`<circle cx="${x}" cy="${y}" r="5.7" fill="none" stroke="#b43d2b" stroke-width=".9" stroke-dasharray="1.5 1.2"/>`:''}
- <circle cx="${x}" cy="${y}" r="${here?3.7:3.1}" fill="${color}" stroke="#fff7e8" stroke-width=".7"/>
- <text x="${x}" y="${y-5.7}" text-anchor="middle" font-size="3.6" fill="#302c24" font-weight="700">${esc(c.name)}</text></g>`}).join('');
- return `<div class="map-scroll"><svg viewBox="0 0 100 106" xmlns="http://www.w3.org/2000/svg" aria-label="삼국지 세계의 간략화된 도시 배치도" role="img">${lines}${dots}</svg></div>`
-}
-let selectedCity='';
-function mapSelect(name){
- selectedCity=name;const c=g.cities.find(x=>x.name===name);if(!c)return;
- const target=el('mapDetail');if(target)target.innerHTML=`<strong>${esc(c.name)}</strong><span>${esc(c.owner)} 세력 · 주둔 ${c.troops.toLocaleString()}명</span>${name===g.loc?'<em>현재 머무는 도시</em>':`<button class="btn gold" onclick="move('${name}')">이 도시로 여행하기 · 행동력 20</button>`}`;
-}
-const originalContent=content;
-content=function(){
- if(tab==='천하 지도'){
- const factionNames=[...new Set(g.cities.map(c=>c.owner))];
- const target=selectedCity&&g.cities.some(c=>c.name===selectedCity)?selectedCity:g.loc;
- const c=g.cities.find(c=>c.name===target);
- return `<h2>천하 지도</h2><p class="sub">도시를 눌러 세력과 주둔 병력을 확인하고 여행하세요. 선택하면 연대기에 이동 기록이 남습니다.</p>
- <div class="parchment-map">${inkMap()}<div class="map-key">${factionNames.map(f=>`<span><i style="background:${factionColor(f)}"></i>${esc(f)}</span>`).join('')}</div></div>
- <div class="map-detail" id="mapDetail"><strong>${esc(c.name)}</strong><span>${esc(c.owner)} 세력 · 주둔 ${c.troops.toLocaleString()}명</span>${c.name===g.loc?'<em>현재 머무는 도시</em>':`<button class="btn gold" onclick="move('${c.name}')">이 도시로 여행하기 · 행동력 20</button>`}</div>
- <p class="map-note">※ 지도는 도시 위치를 단순화한 게임용 도식으로, 정확한 역사 지도가 아닙니다.</p>`;
- }
- if(tab==='연대기'){
- const logs=g.logs||[];
- const keyEvents=logs.filter(l=>/합류|건국|독립|승진|공략 성공|일기토|점령|여행|이동/.test(l.msg));
- return `<h2>나의 연대기</h2><p class="sub">수련과 만남, 전투, 여행, 세력 합류까지 모든 선택이 날짜별로 기록됩니다.</p>
- <div class="chronicle-summary"><span><b>${logs.length}</b>개의 역사 기록</span><span><b>${g.year}년 ${g.month}월</b> 현재</span></div>
- <div class="chronicle"><div class="chronicle-header">주요 사건</div>${keyEvents.length?keyEvents.slice(0,12).map(l=>`<article class="history-entry major"><time>${esc(l.date)}</time><p>${esc(l.msg)}</p></article>`).join(''):'<p class="empty">중요한 사건이 생기면 여기에 표시됩니다.</p>'}
- <div class="chronicle-header">모든 기록 · 최신순</div>${logs.map(l=>`<article class="history-entry"><time>${esc(l.date)}</time><p>${esc(l.msg)}</p></article>`).join('')}</div>`;
- }
- return originalContent();
-};
+function record(text){S.log.unshift({time:`${S.year}년 ${S.month}월`,text});}function mod(stat,n){S.stats[stat]=Math.max(0,Math.min(100,S.stats[stat]+n))}function rel(name,n){S.rel[name]=Math.max(-100,Math.min(100,(S.rel[name]||0)+n))}function advance(month){S.month+=month;while(S.month>12){S.month-=12;S.year++}}
+function choose(id){let next=null,txt='';switch(id){case'rescue':S.flags.saved=true;mod('무력',4);mod('명성',8);rel('아란',25);S.hp=85;txt='마을 주민들을 구하다. 부상을 입었지만 아란과 인연을 맺었다.';next='rescued';break;case'seekliu':mod('매력',3);rel('유비',15);txt='유비·관우·장비를 찾아 지원을 요청했다.';next='seekliu';break;case'escape':S.flags.fled=true;mod('지력',3);mod('명성',-2);txt='위험한 마을에서 탈출했다. 이 선택은 오래 기억될 것이다.';next='escaped';break;case'fight':S.flags.combat='rescue';S.enemy=65;S.hp=Math.max(65,S.hp);S.turn=0;S.combatlog='황건적이 무기를 들어 올렸다.';next='combat';txt='황건적과 일기토를 시작했다.';break;case'outsmart':mod('지력',5);mod('명성',4);rel('아란',10);txt='우회로를 찾아 아란과 주민을 구출했다.';next='crossroads';advance(1);break;case'guide':mod('통솔',5);rel('유비',15);rel('장비',6);txt='유비군을 지름길로 안내하여 마을을 도왔다.';next='crossroads';advance(1);break;case'ambush':mod('지력',6);rel('관우',12);rel('유비',8);txt='매복 계획으로 황건적을 물리쳤다.';next='crossroads';advance(1);break;case'letter':mod('매력',4);rel('유비',7);txt='부상병을 돕고 군영에 서찰을 전달했다.';next='crossroads';advance(1);break;case'takeletter':mod('지력',3);rel('유비',-5);S.flags.stolen=true;txt='부상병을 남겨두고 서찰을 챙겼다. 누군가 그 장면을 목격했다.';next='crossroads';advance(1);break;case'join':S.flags.joined=true;rel('유비',20);mod('통솔',4);txt='유비군에 합류하고 첫 부대를 맡게 되었다.';next='joined';advance(1);break;case'wander':S.flags.joined=false;mod('지력',3);txt='어떤 세력에도 들어가지 않고 떠돌이 장수로 남았다.';next='wandering';advance(1);break;case'convoy':mod('통솔',6);mod('명성',9);rel('유비',S.flags.joined?10:0);txt='수송대 습격을 막아냈다. 첫 지휘 경험이 연대기에 기록되었다.';next='final';advance(1);break;case'challenge':S.flags.combat='boss';S.enemy=88;S.hp=Math.min(100,S.hp+15);S.turn=0;S.combatlog='황건적 우두머리가 창을 휘둘렀다.';txt='황건적 우두머리에게 일기토를 신청했다.';next='combat';break;case'rumor':mod('지력',7);mod('명성',6);txt='황건적 잔당의 약점을 파악해 상인의 물자를 되찾았다.';next='final';advance(1);break}if(next){record(txt);S.scene=next;save();render()}}
+function battle(action){if(S.scene!=='combat')return;S.turn++;let enemyDamage=0,myDamage=0;const roll=(a,b)=>Math.floor(a+Math.random()*(b-a+1));if(action==='attack'){enemyDamage=roll(13,24)+Math.floor(S.stats.무력/12);myDamage=roll(9,19)}if(action==='defend'){enemyDamage=roll(3,9);myDamage=roll(0,4)}if(action==='feint'){const success=Math.random()<(0.5+S.stats.지력/350);enemyDamage=success?roll(24,35):roll(3,8);myDamage=success?roll(2,10):roll(13,22)}S.enemy=Math.max(0,S.enemy-enemyDamage);S.hp=Math.max(0,S.hp-myDamage);S.combatlog=`${action==='attack'?'정면 공격':action==='defend'?'방어 태세':'기습 전술'}: 적에게 ${enemyDamage} 피해 · 받은 피해 ${myDamage}\n${S.combatlog}`;if(S.enemy===0){mod('무력',6);mod('명성',10);if(S.flags.combat==='rescue'){rel('아란',15);S.flags.saved=true;record('일기토에서 승리하여 마을 주민을 구했다.');S.scene='crossroads';advance(1)}else{rel('장비',14);record('황건적 우두머리를 쓰러뜨렸다. 장비가 실력을 인정했다.');S.scene='final';advance(1)}}else if(S.hp===0){S.hp=30;S.flags.wounded=true;mod('지력',3);record('일기토에서 패배해 부상당했다. 살아남았지만 패배를 기억한다.');S.scene=S.flags.combat==='rescue'?'crossroads':'final';advance(1)}save();render()}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}function boot(){try{const raw=localStorage.getItem(KEY);if(raw){const state=JSON.parse(raw);if(state&&state.stats&&state.scene&&state.log)S=state}}catch(e){}render()}
+function newGame(){const name=($('heroName')?.value||'').trim().slice(0,14);if(!name){alert('장수 이름을 입력해 주세요.');return}S=initial(name);save();render()}function restart(){if(confirm('현재 진행 상황을 지우고 처음부터 시작할까요?')){S=null;localStorage.removeItem(KEY);render()}}
+function top(){return `<div class="top"><div class="brand">삼국지 · 무명의 영웅<small>CHRONICLES OF A NAMELESS HERO</small></div><button onclick="restart()">새로운 이야기</button></div>`}function statBox(){return `<aside class="sheet side"><h2>${esc(S.name)} <span class="muted" style="font-size:12px">· ${S.flags.joined?'유비군 소속':'떠돌이 장수'}</span></h2><div class="stats">${Object.entries(S.stats).map(([k,v])=>`<div class="stat"><span>${k}</span><b>${v}</b></div>`).join('')}</div><p>몸 상태 ${S.hp}/100 · ${S.year}년 ${S.month}월</p></aside>`}
+function startPage(){return `<div class="shell">${top()}<section class="sheet start"><div class="hero"><canvas class="pixel-scene" width="320" height="150" aria-hidden="true"></canvas><div class="kicker">184년 · 황건적의 난</div><h1>난세의 시작</h1><p>그대의 선택이 삼국지의 역사가 된다</p></div><div class="story"><h2>새로운 장수의 이야기</h2><p>난세에 이름 없이 태어난 한 사람. 유비와 인연을 맺을 수도, 혼자 난세를 헤쳐 나갈 수도 있습니다. 선택은 시간이 흘러 다시 당신에게 돌아옵니다.</p><label for="heroName">장수 이름</label><input id="heroName" maxlength="14" placeholder="예: 조연" autocomplete="off"><button class="primary" onclick="newGame()">이야기 시작하기</button></div></section></div>`}
+function battlePage(){const pct=(n,m)=>Math.max(0,Math.round(n/m*100));return `<div class="date">184년 · 황건적의 난</div><h2 class="title">칼끝에 걸린 운명</h2><p>일기토에서는 매 턴 행동을 선택합니다. 공격은 안정적이고, 방어는 피해를 줄이며, 기습은 위험하지만 큰 피해를 줍니다.</p><div class="battle"><canvas class="pixel-duel" width="240" height="100" aria-label="픽셀 일기토 장면"></canvas><b>${esc(S.name)} · 체력 ${S.hp}</b><div class="hp mine"><i style="width:${pct(S.hp,100)}%"></i></div><b>황건적 · 체력 ${S.enemy}</b><div class="hp"><i style="width:${pct(S.enemy,S.flags.combat==='boss'?88:65)}%"></i></div></div><div class="combatlog">${esc(S.combatlog)}</div><div class="choices">${[['attack','정면 공격','안정적으로 적을 공격한다'],['defend','방어 태세','받는 피해를 크게 줄인다'],['feint','기습 전술','성공하면 큰 피해, 실패하면 위험']].map(([id,t,d],i)=>`<button class="choice" onclick="battle('${id}')"><span class="number">${i+1}</span><span><strong>${t}</strong><small>${d}</small></span></button>`).join('')}</div>`}
+function storyPage(){if(S.scene==='combat')return battlePage();let v=scenes[S.scene]||scenes.final;return `<div class="date">${v.date}</div><h2 class="title">${v.title}</h2><div class="line"></div><div class="narrative">${esc(typeof v.text==='function'?v.text(S):v.text)}</div>${v.choices.length?`<div class="choices">${v.choices.map(([name,desc,id],i)=>`<button class="choice" onclick="choose('${id}')"><span class="number">${i+1}</span><span><strong>${name}</strong><small>${desc}</small></span></button>`).join('')}</div>`:`<p class="end">제1장 끝 — 당신만의 역사가 시작되었다.</p><div class="outcome">이번 이야기에서 남긴 기록은 연대기에서 다시 확인할 수 있습니다. 다음 장에서는 190년 반동탁 연합으로 이야기가 이어집니다.</div><button class="primary" onclick="restart()">다른 선택으로 다시 시작</button>`}`}
+function historyPage(){return `<h2>나의 연대기</h2><p>선택과 전투 결과가 날짜별로 자동 기록됩니다. 최신 기록부터 표시합니다.</p>${S.log.map(x=>`<div class="entry"><time>${esc(x.time)}</time><p>${esc(x.text)}</p></div>`).join('')}`}
+function relationsPage(){return `<h2>인물 관계도</h2><p>당신의 선택에 따라 장수들의 신뢰가 변합니다.</p>${Object.entries(S.rel).filter(([k])=>k!=='황건적').map(([name,value])=>`<div class="relation"><span>${esc(name)}</span><b>${value>0?'호의 '+value:value<0?'경계 '+Math.abs(value):'아직 인연 없음'}</b></div>`).join('')}`}
+function mapPage(){return `<h2>천하의 정세</h2><p>184년의 주요 도시를 단순화한 지도입니다. 현재 스토리의 무대는 탁군 일대입니다.</p><svg class="map" viewBox="0 0 480 300" role="img" aria-label="도시 위치를 단순화한 삼국지 이야기 지도"><path d="M45 78L105 24 224 31 310 15 436 71 454 141 391 247 300 285 166 264 52 205Z" fill="#d5c39d" stroke="#927e5e" stroke-width="2"/><path d="M62 190 Q140 94 221 169 T429 197" fill="none" stroke="#9bb0ae" stroke-width="18" opacity=".4"/><path d="M120 45l38 55 32-46 36 72 42-67" fill="none" stroke="#908367" stroke-width="11" opacity=".35"/>${[['탁군',352,66],['업',292,117],['낙양',224,151],['장안',143,161],['허창',252,192],['진류',319,182],['하비',377,196],['양양',216,240],['건업',375,256]].map(([n,x,y])=>`<g><circle cx="${x}" cy="${y}" r="6"/><text x="${x+10}" y="${y-9}">${n}</text></g>`).join('')}</svg><p class="footnote">※ 역사 지도를 정밀하게 재현한 것이 아닌, 이야기 이해를 위한 게임용 배치도입니다.</p>`}
 
-el('save').addEventListener('click',()=>{if(g)save();else showCreator()});el('reset').addEventListener('click',()=>{if(confirm('기존 진행 상황을 지우고 새 장수로 시작할까요?')){g=null;localStorage.removeItem(KEY);render();showCreator()}});render();
+function drawPixelScenes(){
+  document.querySelectorAll('.pixel-scene').forEach(c=>drawScene(c,S?.scene||'intro'));
+  document.querySelectorAll('.pixel-duel').forEach(c=>drawScene(c,'combat'));
+}
+function drawScene(canvas,scene){
+  const ctx=canvas.getContext('2d');if(!ctx)return;
+  const w=160,h=75;canvas.width=w;canvas.height=h;ctx.imageSmoothingEnabled=false;
+  const px=(x,y,ww,hh,color)=>{ctx.fillStyle=color;ctx.fillRect(Math.round(x),Math.round(y),ww,hh)};
+  let night=['intro','rescued','escaped','combat'].includes(scene);
+  px(0,0,w,h,night?'#232a3e':'#748c86');
+  // layered mountains
+  for(let x=0;x<w;x++){
+    let a=28+Math.round(7*Math.sin(x*.045)+5*Math.sin(x*.11));
+    px(x,a,1,h-a,night?'#41435a':'#8c9f94');
+    let b=43+Math.round(5*Math.sin(x*.08+2)+4*Math.sin(x*.19));
+    px(x,b,1,h-b,night?'#29384a':'#647b71');
+  }
+  px(0,60,w,15,night?'#38372f':'#655c43');
+  for(let x=0;x<w;x+=7)px(x,65+(x%4),5,1,night?'#564a38':'#948269');
+  // sun or moon and mist
+  px(120,12,10,10,night?'#ddc591':'#d7c49a');
+  for(let j=0;j<4;j++)px(j*43-6,47+j%3*3,27,2,'#a7aca183');
+  // palisades / huts
+  const house=(x,y)=>{px(x,y,22,17,'#5e4739');px(x+3,y+3,16,13,'#9e8768');for(let q=0;q<12;q++)px(x+q*2-1,y-1-Math.floor(q/3),4,2,'#524139');px(x+8,y+7,6,10,'#49382e')};
+  house(12,42);house(46,47);
+  if(['intro','rescued','combat'].includes(scene)){
+    for(const [x,y] of [[18,40],[26,36],[57,43],[60,34]]){
+      px(x,y,5,8,'#c45132');px(x+1,y-5,3,6,'#efa54f');px(x+2,y-8,2,4,'#e5c276')
+    }
+  }
+  if(['seekliu','crossroads','joined'].includes(scene)){for(let x=10;x<140;x+=22){px(x,43,2,19,'#453f36');px(x+2,39,12,9,'#a14b3d');}}
+  if(['wandering','escaped'].includes(scene))for(let x=10;x<150;x+=25){px(x,34,3,29,'#293e35');px(x-6,27,15,12,'#364a3c');}
+  function warrior(x,y,tunic,helmet){
+    px(x+6,y,8,7,helmet);px(x+7,y+4,6,6,'#d7a987');
+    px(x+3,y+10,14,13,tunic);px(x,y+11,4,13,'#d3a482');
+    px(x+17,y+11,4,13,'#d3a482');px(x+5,y+23,5,8,'#352e35');px(x+13,y+23,5,8,'#352e35');
+    px(x+8,y+5,1,1,'#282c35');px(x+13,y+5,1,1,'#282c35');
+  }
+  warrior(scene==='combat'?42:95,39,'#406b75','#3c3e48');
+  if(scene==='combat'||['intro','rescued'].includes(scene))warrior(122,39,'#9c3c31','#4a3332');
+  else if(['seekliu','crossroads','joined'].includes(scene))warrior(123,39,'#416d50','#313a30');
+  // bottom pixel embellishment
+  px(0,73,w,2,'#1e242e');
+}
+
+function render(){const app=$('app');if(!S){app.innerHTML=startPage();drawPixelScenes();return}const v=scenes[S.scene]||scenes.final;app.innerHTML=`<div class="shell">${top()}<div class="layout"><main class="sheet"><div class="hero"><canvas class="pixel-scene" width="320" height="150" aria-hidden="true"></canvas><div class="kicker">제1장 · 난세의 시작</div><h1>${S.scene==='combat'?'첫 일기토':v.title}</h1><p>184년 황건적의 난 · 선택에 따라 변화하는 이야기</p></div><div class="story">${storyPage()}</div></main>${statBox()}</div><nav class="tabs">${['연대기','인물 관계도','천하 지도'].map(t=>`<button class="${tab===t?'active':''}" onclick="tab='${t}';render()">${t}</button>`).join('')}<button onclick="save();alert('진행 상황을 저장했습니다.')">저장</button></nav><section class="sheet tabpage">${tab==='연대기'?historyPage():tab==='인물 관계도'?relationsPage():mapPage()}</section><p class="footer">삼국지: 무명의 영웅 · 개인 창작 스토리 게임 · 기기의 브라우저에 자동 저장</p></div>`;drawPixelScenes()}boot();
 </script></body></html>
