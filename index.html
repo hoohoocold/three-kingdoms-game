@@ -85,6 +85,19 @@ html,body{background:#090e19!important;background-image:radial-gradient(ellipse 
 .ref-hero-art{position:absolute;right:4%;top:8px;height:160px;width:137px;object-fit:cover;opacity:.72;mask-image:linear-gradient(to bottom,black 80%,transparent);border:1px solid #7a633f}
 .side .officer-sprite{image-rendering:pixelated}
 @media(max-width:600px){.ref-portrait.hero-port,.ref-portrait.npc-port,.ref-portrait-item.npc img{width:80px;height:98px}.ref-dialogue-portraits{gap:8px}.ref-hero-art{right:9px;height:110px;width:90px;opacity:.54}.hero h1{position:relative;z-index:2}.officer-card{gap:9px}.ref-portrait{width:78px;height:92px}}
+</style><style id="v091-buttons">
+:root{--ink:#f1e5d0;--gold:#d4aa68}
+button,button.choice,button.primary,.tabs button,.top button,.plain,.town-actions button,.town-response button,.town-action-buttons button,.map-toolbar button,.travel-city,.region-option,.credit-next{font-family:inherit!important;border:2px solid #b58d53!important;border-radius:2px!important;background:#172331!important;color:#f5e9d3!important;box-shadow:inset 0 0 0 1px #403426,3px 3px 0 #091018!important;text-align:left;transition:background .12s,border-color .12s}
+button:hover:not(:disabled),button:focus-visible,.tabs button.active,.choice:hover,.region-option:has(input:checked){background:#76522d!important;border-color:#e6c17c!important;color:#fff5de!important}
+button:disabled{opacity:.48!important;cursor:not-allowed}
+button.primary,.credit-next{background:#74502a!important;border-color:#e6bc73!important;text-align:center;font-weight:700}
+button .number{background:#9d7542;border-color:#ddb573}
+.town-box{background:#0e1a28!important;border:2px solid #b58d53!important;border-radius:2px!important;color:#f0e1c5!important}
+.town-box h3,.town-response h4{color:#e7bd79!important}
+.town-response{background:#172637!important;border-left:3px solid #c89b60!important;color:#f0e1c5!important}
+.town-note,.town-hint{color:#d2bea0!important}
+.town-meet{color:#f0c781!important}
+.town-actions small{color:#c8bca7!important}
 </style></head><body><div id="app"></div><script>
 'use strict';const KEY='samguk-story-v1';const $=id=>document.getElementById(id);let S=null,tab='연대기';const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function initial(name){return{name,scene:'intro',year:184,month:3,stats:{무력:48,지력:47,통솔:45,매력:48,명성:0},rel:{유비:0,관우:0,장비:0,아란:0,황건적:0,조조:0,손견:0,'장각 세력':0},flags:{},hp:100,enemy:70,guard:false,turn:0,combatlog:'',log:[{time:'184년 3월',text:`${name}, 탁군 근처의 작은 마을에서 여행을 시작하다.`}],ending:false}}
@@ -594,37 +607,72 @@ function lifeState(){lifeInit();const k=lifeKey();if(!S.flags.townVisitDay[k])S.
 function showTown(){if(!S||S.scene==='retired'||S.scene==='combat'||/credits$/.test(S.scene))return '';
  const state=lifeState(),c=S.location||'탁군',war=lifeWar(),act=S.flags.townAction;
  const options=[['inn','🍶 여관','술과 식사, 낯선 사람들'],['market','🛒 시장','구매, 정보, 작은 의뢰'],['training','⚔ 훈련장','대련과 기술 연마'],['rest','🏮 숙소','휴식과 여행 준비']];
- let content='';if(act&&act.key===state.k){content=`<div class="town-response"><h4>${esc(act.title)}</h4>${esc(act.body)}${act.contact?`<p class="town-meet">인물: ${esc(act.contact.known?act.contact.name:'???')} · ${esc(act.contact.status)}</p>`:''}${act.pending?`<div class="town-action-buttons"><button onclick="townResponse('talk')">대화를 이어 간다</button><button onclick="townResponse('leave')">이쯤에서 자리를 뜬다</button></div>`:''}</div>`}
+ let content='';if(act&&act.key===state.k&&(!act.city||act.city===c)){content=`<div class="town-response"><h4>${esc(act.title)}</h4>${esc(act.body)}${act.contact?`<p class="town-meet">인물: ${esc(act.contact.known?act.contact.name:'???')} · ${esc(act.contact.status)}</p>`:''}${act.pending?`<div class="town-action-buttons"><button onclick="townResponse('talk')">대화를 이어 간다</button><button onclick="townResponse('leave')">이쯤에서 자리를 뜬다</button></div>`:''}</div>`}
  return `<section class="town-box"><h3>${esc(c)} · 도시 생활</h3><p class="town-note">${war?'⚠ 전쟁 중 · 활동 횟수가 줄고 병사·피난민 관련 사건이 발생합니다.':'평상시 · 인연과 일상을 쌓을 수 있습니다.'} · 이번 방문 ${state.count}/${state.max}회</p><div class="town-actions">${options.map(([id,label,help])=>`<button onclick="townAction('${id}')" ${state.count>=state.max?'disabled':''}><b>${label}</b><br><small>${help}</small></button>`).join('')}</div>${content}<p class="town-hint">도시 활동은 본편을 진행시키지 않습니다. 다른 도시로 이동하거나 장이 넘어가면 활동 횟수가 새로 정해집니다.</p></section>`;
 }
-function townAction(type){if(!S)return;const state=lifeState();if(state.count>=state.max)return;const f=S.flags,city=S.location||'탁군',war=lifeWar();f.townVisitDay[state.k]++;
+function townAction(type){
+ if(!S)return;const st=lifeState();if(st.count>=st.max)return;
+ const f=S.flags, city=S.location||'탁군',war=lifeWar();
+ f.townVisitDay[st.k]++;
+ f.townRecords[city]=(f.townRecords[city]||0)+1;
+ f.townInnVisits=f.townInnVisits||{};
  let title='',body='',contact=null,pending=false;
- const count=f.townRecords[city]||0;f.townRecords[city]=count+1;
  const names=CITY_LIFE[city]||['떠돌이 여행객','상단 호위','지역 주민'];
- const slot=war?1:0,alias=names[slot],cid=city+':'+alias;
  if(type==='inn'){
-  title=war?'전장의 주막':'저녁의 작은 주막';
-  body=war?`${city}의 주막은 피난민과 부상병으로 가득하다. 군영 소식을 아는 손님이 조심스럽게 말을 건다.\n“전선에서 돌아왔소. 무사히 돌아갈 수 있을지 모르겠군.”`:`${city}의 주막에 들어가 따뜻한 음식과 술을 주문했다. 구석에 앉아 있던 여행객이 빈자리를 가리킨다.\n“이 근처 사람은 아닌 듯하군요. 잠시 이야기라도 나누시겠습니까?”`;
-  let ob=f.townContacts[cid]||{name:alias,meet:0,known:false,status:'이름을 모르는 손님'};ob.meet++;
-  if(ob.meet>=2){ob.known=true;ob.status='주막에서 여러 차례 만난 지인';}else{ob.status='처음 대화한 낯선 이';}
-  f.townContacts[cid]=ob;contact={...ob,id:cid};pending=true;
-  if(ob.known){body+=`\n\n그는 자신의 이름과 사는 곳을 밝혔다. “사람들은 나를 ${alias}(이)라 부르오.”`;record(`${city}의 여관에서 ${alias}의 이름을 알게 되었다.`)}
-  else record(`${city}의 여관에서 이름 모를 여행객과 마주쳤다.`);
+  const n=f.townInnVisits[city]||0;
+  f.townInnVisits[city]=n+1;
+  const alias=names[(n+(war?1:0))%names.length];
+  const id=city+':'+alias;
+  let ob=f.townContacts[id]||{name:alias,meet:0,known:false,status:'낯선 손님',city};
+  const first=ob.meet===0;
+  ob.meet++;ob.known=true;
+  ob.status=first?'첫 인사':'다시 만난 지인';
+  f.townContacts[id]=ob;contact={...ob,id};pending=true;
+  title=war?city+' · 전장의 주막':city+' · 저녁의 주막';
+  const placeDetail={
+   '탁군':'북방에서 온 의병들이 둘러앉아 고향 이야기를 나누고 있다.',
+   '북평':'말을 돌보는 마부들과 변방의 군졸들이 눈보라 이야기를 한다.',
+   '업':'기주에서 넘어온 군량 수레가 도착해 여관이 붐빈다.',
+   '진류':'군량을 운반하던 상인들이 길목의 검문 소식을 전한다.',
+   '낙양':'도성의 관리들이 들락거리며 궁중 소문을 낮은 목소리로 주고받는다.',
+   '장안':'서쪽에서 온 대상들이 낙타와 군마를 밖에 매어 놓았다.',
+   '허창':'관청의 서리들이 내일 발송할 공문을 정리하고 있다.',
+   '하비':'서주의 뱃사공들이 젖은 옷을 말리며 강물 사정을 나눈다.',
+   '수춘':'남북의 상단들이 관문 통행세를 두고 언쟁한다.',
+   '양양':'형주의 선비들이 술잔을 놓고 시와 세상일을 논한다.',
+   '강하':'선창의 수군들이 나루터의 물살과 전황을 이야기한다.',
+   '건업':'장강의 배들이 정박하고 강동 상인들이 새로운 물건을 펼쳐 놓는다.',
+   '성도':'촉의 비단 상인들이 한중으로 이어지는 산길을 이야기한다.',
+   '한중':'산악 관문을 통과한 여행객들이 험한 길을 돌아본다.',
+   '무위':'변방의 상인들이 서역에서 실어 온 짐을 정리한다.'
+  };
+  body=(placeDetail[city]||'낯선 여행객들이 한자리에 모였다.')+'\n\n';
+  if(first){
+   body+=`당신이 자리를 잡자 ${alias}이(가) 다가온다.\n“처음 뵙겠소. 사람들은 나를 ${alias}(이)라 부르오. 그대는 어떻게 불러 드리면 되겠소?”\n\n“${S.name}(이)라 하오.” 서로 이름을 나누었다.`;
+   record(`${city}의 여관에서 ${alias}와 처음 만나 이름을 나누었다.`);
+  }else{
+   body+=`“${S.name} 님, 다시 뵙는군요.” ${alias}이(가) 당신에게 자리를 권한다.\n“지난번 이야기 이후 ${city}의 사정도 달라졌소.”`;
+   record(`${city}의 여관에서 ${alias}와 재회했다.`);
+  }
+  if(war)body+='\n\n밖에서는 군사의 발소리가 들린다. 술자리가 길어지기 전에 전황을 살펴야 할 듯하다.';
  }else if(type==='market'){
-  title=war?'전시 물자 시장':'북적이는 장터';body=war?`${city} 시장의 물자는 귀해졌다. 한 상인이 부상병들에게 약재를 나눠 줄지 망설인다. 당신이 짐 옮기기를 돕자 피난민이 감사 인사를 건넨다.`:`${city}의 시장에서 ${names[(count+1)%names.length]}이(가) 물건을 잃어버렸다. 당신이 함께 찾아주자 상인은 이곳의 길과 사람들에 관한 정보를 알려준다.`;
-  mod('매력',2);record(`${city}의 ${war?'전시 물자 시장':'시장'}에서 사람들을 도왔다.`);
+  title=war?city+' · 전시 장터':city+' · 시장';
+  body=war?`${city} 시장에서 약재와 식량이 부족하다. 부상병을 위한 물자를 옮기며 사람들의 이야기를 들었다.`:`${city}의 시장을 둘러보며 상인을 도왔다. ${names[(f.townRecords[city])%names.length]}에게서 현지 소식을 들었다.`;
+  mod('매력',2);record(`${city} 시장에서 주민을 도왔다.`);
  }else if(type==='training'){
-  title=war?'급조된 방어진':'성 밖의 훈련장';body=war?`${city} 성 밖에서 군사들이 무기를 정비한다. 부상자를 대신해 방패 사용법을 가르치며 하루를 보냈다.`:`${city} 훈련장에 모인 무인들과 가벼운 대련을 했다. ${names[(count+2)%names.length]}이(가) 당신의 자세를 보고 조언을 남겼다.`;
-  mod('무력',2);record(`${city}에서 무예를 단련했다.`);
+  title=war?city+' · 임시 훈련장':city+' · 훈련장';
+  body=war?`${city}의 병사들과 방어 대형을 연습했다. 전투를 앞둔 이들의 표정이 무겁다.`:`${city} 훈련장에서 무예를 연마했다. 현지 무인들이 당신의 솜씨를 지켜봤다.`;
+  mod('무력',2);record(`${city}에서 무예를 연마했다.`);
  }else{
-  title=war?'급히 마련한 숙영지':'고요한 객점';body=war?`${city}의 숙소는 피난민 때문에 붐빈다. 자리를 나누어 쓰며 몸을 쉬게 했다.`:`${city}의 객점에 짐을 풀고 여행 기록을 정리했다. 다음 날 여정을 위해 충분히 쉬었다.`;
-  S.hp=Math.min(100,(S.hp||70)+12);record(`${city}에서 쉬며 체력을 회복했다.`);
+  title=war?city+' · 임시 숙영지':city+' · 숙소';
+  body=`${city}에서 여독을 풀고 다음 여정을 준비했다. 잠시 체력을 회복했다.`;
+  S.hp=Math.min(100,(S.hp||70)+12);record(`${city}에서 휴식했다.`);
  }
- f.townAction={key:state.k,title,body,contact,pending};save();render();
+ f.townAction={key:st.k,city,type,title,body,contact,pending};save();render();
 }
 function townResponse(answer){if(!S)return;let act=S.flags?.townAction;if(!act||!act.pending)return;
  act.pending=false;if(answer==='talk'){
-  act.body+='\n\n당신은 고향과 여정에 관해 이야기를 나누었다. 상대는 다음에 다시 만나면 더 많은 이야기를 들려주겠다고 약속했다.';mod('매력',1);record(`${S.location}의 여관에서 낯선 사람과 긴 대화를 나누었다.`);
+  act.body+=`\n\n${act.contact?.name||'상대'}와(과) ${S.location}의 최근 소문을 이야기했다. 두 사람은 다음 만남을 기약했다.`;mod('매력',1);record(`${S.location}의 여관에서 낯선 사람과 긴 대화를 나누었다.`);
  }else{act.body+='\n\n당신은 인사를 나누고 여관을 나섰다. 만남이 다시 이어질지는 알 수 없다.'}save();render();
 }
 const beforeLifeRender=render;
@@ -653,12 +701,30 @@ function decorateReference(){
    if(found){let npc=document.createElement('div');npc.className='ref-portrait-item npc';npc.innerHTML='<img class="ref-portrait npc-port" alt="등장인물 도트 초상화"><span></span>';npc.querySelector('img').src=referencePortrait(found);npc.querySelector('span').textContent=found;wrap.appendChild(npc)}
    const narrative=story.querySelector('.narrative');if(narrative)narrative.before(wrap);
  }
- const city=document.querySelector('.town-box');if(city&&!city.querySelector('.tavern-pixel')){const image=document.createElement('img');image.src=REF_ART.tavern;image.className='tavern-pixel';image.alt='삼국지 도트 여관 풍경';city.querySelector('h3')?.after(image)}
+ const city=document.querySelector('.town-box');if(city&&S.flags?.townAction?.type==='inn'&&S.flags.townAction.city===S.location&&S.flags.townAction.key===lifeKey()&&!city.querySelector('.tavern-pixel')){const image=document.createElement('img');image.src=REF_ART.tavern;image.className='tavern-pixel';image.alt='삼국지 도트 여관 풍경';city.querySelector('h3')?.after(image)}
  const tab=document.querySelector('.tabpage');if(tab&&tab.querySelector('h2')?.textContent.includes('장수 도감'))replaceArchiveAvatars();
  document.querySelectorAll('.portrait-person canvas').forEach((c,i)=>{const img=document.createElement('img');img.className='ref-portrait';img.src=i===0?REF_ART.player:REF_ART.soldier;img.alt='전투 초상화';c.replaceWith(img)});
 }
 const beforeReferenceRender=render;
 render=function(){beforeReferenceRender();decorateReference()};
+
+
+// One authoritative version label across every screen.
+const GAME_VERSION = 'v0.9.2';
+function syncGameVersion(){
+  const brand = document.querySelector('.brand');
+  if(brand){
+    const first = Array.from(brand.childNodes).find(n=>n.nodeType===Node.TEXT_NODE);
+    if(first) first.textContent = '삼국지 · 무명의 영웅 ' + GAME_VERSION;
+  }
+  const footer = document.querySelector('.footer');
+  if(footer) footer.textContent = footer.textContent.replace(/v0\.\d+(?:\.\d+)?/g,GAME_VERSION);
+  document.title = '삼국지: 무명의 영웅 ' + GAME_VERSION;
+  // Start, character creation and any other screen may use its own version badge.
+  document.querySelectorAll('[data-game-version]').forEach(el=>el.textContent=GAME_VERSION);
+}
+const renderBeforeVersionSync = render;
+render = function(){renderBeforeVersionSync();syncGameVersion();};
 
 boot();
 </script></body></html>
