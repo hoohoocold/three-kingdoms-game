@@ -738,7 +738,7 @@ render=function(){beforeReferenceRender();decorateReference()};
 
 
 // One authoritative version label across every screen.
-const GAME_VERSION = 'v0.9.6';
+const GAME_VERSION = 'v0.9.7';
 function syncGameVersion(){
   const brand = document.querySelector('.brand');
   if(brand){
@@ -794,6 +794,65 @@ battlePage=function(){
  const stage=`<div class="v095-hud"><div>${esc(S.name)}<div class="v095-meter"><i style="width:${mine}%"></i></div><small>${mine}/100</small></div><div class="vs">VS</div><div class="foe">${enemyName}<div class="v095-meter red"><i style="width:${foe}%"></i></div><small>${S.enemy}/${maxEnemy}</small></div></div><div class="v095-stage"><img class="v095-bg" src="${sceneBg}" alt="전장 배경"><div class="v095-fighters"><div class="v095-fighter"><img src="${REF_ART.player}" alt="플레이어 장수 이미지"><span class="v095-tag">${esc(S.name)}</span></div><div class="v095-fighter enemy"><img src="${REF_ART[enemyKey]}" alt="적 병사 이미지"><span class="v095-tag">${enemyName}</span></div></div></div><p class="v095-caption">전투 장면 · 실제 등장인물 기준 표시 (일반 적은 공통 병사 이미지)</p>`;
  // Preserve original game action buttons, log and animation canvas for JS compatibility.
  return old.replace('<div class="battle">','<div class="battle">'+stage);
+};
+
+
+// v0.9.7 — tavern location/dialogue synchronization and location-scoped encounter memory.
+const TAVERN_SCENES_097={
+ '탁군':['의병들이 마을을 지킬 사람을 모집하고 있다. 북쪽 성문 근처에서 다친 사람을 보았다는 이야기가 나온다.','장정들이 잃어버린 식량 창고를 찾고 있다. 오늘 밤 마을 밖 초소에 불이 켜졌다.'],
+ '북평':['국경의 기마병들이 말의 발굽을 손질하고 있다. 밤마다 봉화가 울린다는 소문이 돈다.','변방 상인이 말을 빼앗겼다며 흥정을 청한다.'],
+ '업':['군량 장부에 기록된 숫자가 수레의 짐과 다르다. 서리들이 서로를 의심한다.','하북의 손님들이 누가 도시를 다스려야 하는지 언쟁하고 있다.'],
+ '진류':['군영으로 보낼 쌀자루가 사라졌다. 수송로를 아는 손님을 찾고 있다.','문서 한 장 때문에 상인과 관리가 서로 책임을 떠넘긴다.'],
+ '낙양':['황실의 관리들이 술잔도 들지 못하고 눈치를 본다. 성문에서는 검문이 심해졌다.','낯선 시종이 빈 술잔 아래 황실의 인장이 찍힌 쪽지를 숨겼다.'],
+ '장안':['서쪽에서 온 피난민들이 장마가 시작되기 전 숙소를 구하고 있다.','군량을 실은 짐수레의 행방을 놓고 서량 출신 무인들이 다투고 있다.'],
+ '허창':['관청에서 나온 서리가 새 통행증을 보여주며 숙박객을 조사한다.','급히 약을 구하는 의원이 부상병들의 소식을 전한다.'],
+ '하비':['강물이 불어나 나룻배가 묶였다. 서주 상인이 돌아갈 길을 찾는다.','곡식값이 갑자기 오른 이유를 두고 손님들이 장부를 맞춰 본다.'],
+ '수춘':['관문의 새로운 세금 때문에 상단들이 다른 길을 찾는다.','호위무사가 빈 술병을 내려놓고 사라진 상인의 행방을 묻는다.'],
+ '양양':['젊은 선비들이 시를 읊다가 형주의 앞날을 놓고 논쟁한다.','강을 건넌 사람들의 소문이 엇갈린다. 서신을 옮길 사람을 찾는 이가 있다.'],
+ '강하':['수군들이 밤새 불빛을 본 강 하류의 상황을 이야기한다.','나루터에서 일하는 사공이 배 한 척이 돌아오지 않았다며 한숨을 쉰다.'],
+ '건업':['술 빚는 이가 장강을 건넌 상단의 손님을 맞이한다. 항구에는 새 배가 들어왔다.','강동의 상인이 잃어버린 화물을 찾는다. 물길에 익숙한 사람을 구하고 있다.'],
+ '성도':['비단 상인들이 시장의 소문을 이야기한다. 먼 산길의 길잡이가 필요한 모양이다.','촉의 약초꾼이 찾기 어려운 약재를 꺼내며 산골 마을의 사정을 전한다.'],
+ '한중':['관문을 넘어온 일행이 통행증 검사로 곤욕을 치렀다고 말한다.','산길 안내인이 우회로를 가리키며 밤중의 도적을 조심하라고 경고한다.'],
+ '무위':['서역 상인들이 모래바람에 잃은 군마를 찾고 있다.','변방의 궁수가 먼 봉화대를 가리키며 새벽에 오르는 연기를 말한다.']
+};
+const townActionBefore097=townAction;
+townAction=function(type){
+ if(!S)return;
+ const city=S.location||S.startRegion||'탁군';
+ const before=S.flags?.townInnVisits?.[city]||0;
+ townActionBefore097(type);
+ if(type!=='inn'||!S.flags?.townAction||S.flags.townAction.city!==city)return;
+ const act=S.flags.townAction;
+ const stories=TAVERN_SCENES_097[city]||[];
+ const detail=stories[before%stories.length]||`${city}의 손님들이 지금의 세상일을 이야기한다.`;
+ const contact=act.contact;
+ const name=contact?.name||'낯선 손님';
+ const first=contact?.meet===1;
+ const war=lifeWar();
+ act.title=`${city} · ${war?'전시 여관':'여관에서의 만남'}`;
+ act.body=first?
+ `${city}의 여관에서 ${detail}\n\n낯선 이가 자리를 내어준다. “내 이름은 ${name}이오. 그대는?”\n“${S.name}이라 하오.” 서로 이름을 밝히고 술잔을 나눈다.`:
+ `${city}의 여관에서 ${detail}\n\n“${S.name} 님, 다시 오셨군요.” ${name}이(가) 반갑게 인사한다. “지난번 이후 이곳 사정이 바뀌었소. 잠시 듣고 가시겠소?”`;
+ if(war)act.body+='\n\n밖에서는 군화 소리가 들린다. 지금은 오래 머물기 어렵다.';
+ save();render();
+};
+const renderBefore097=render;
+let lastTownLocation097=null;
+render=function(){
+ if(S){
+  const city=S.location||S.startRegion||'탁군';
+  if(lastTownLocation097!==null&&lastTownLocation097!==city&&S.flags){S.flags.townAction=null;}
+  lastTownLocation097=city;
+ }
+ renderBefore097();
+ if(!S)return;
+ const city=S.location||S.startRegion||'탁군';
+ const h=document.querySelector('.town-box h3');
+ if(h)h.textContent=`📍 ${city} · 도시 생활`;
+ const town=document.querySelector('.town-box');
+ if(town&&S.flags?.townAction&&S.flags.townAction.city!==city){
+  const previous=town.querySelector('.town-response');if(previous)previous.remove();
+ }
 };
 
 boot();
